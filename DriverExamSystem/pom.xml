@@ -10,7 +10,7 @@
 	<!-- 提取用到的版本，方便升级维护 -->
 	<properties>
 		<jetty.version>7.6.14.v20131031</jetty.version>
-		<spring-framework.version>4.3.4.RELEASE</spring-framework.version>
+		<spring-framework.version>4.1.0.RELEASE</spring-framework.version>
 		<spring-data-jpa.version>1.7.0.RELEASE</spring-data-jpa.version>
 		<hibernate.version>4.3.6.Final</hibernate.version>
 		<jackson.version>2.4.2</jackson.version>
