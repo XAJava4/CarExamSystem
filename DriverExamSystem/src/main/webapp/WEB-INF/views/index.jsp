@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Hello World!</h1>
-	<a href="/findbyusername/zhangsan">获取用用户名</a>
-	<a href="/findbypassword/123654">获取用密码</a>
+	<a href="user/findbyusername/zhangsan">获取用用户名</a>
+	<a href="user/findbypassword/123654">获取用密码</a>
 </body>
 </html>

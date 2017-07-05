@@ -1,6 +1,5 @@
 package com.java4.des.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -14,6 +13,7 @@ import com.java4.des.entity.User;
 import com.java4.des.service.UserService;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
 	private static Logger log = Logger.getLogger(UserController.class);
@@ -21,41 +21,25 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/index")
-	public String index() {
-		System.out.println("index method run....");
-		return "index";
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/json")
-	public List<String> json() {
-		List<String> list = new ArrayList<String>();
-		for (int i = 0; i < 10; i++) {
-			list.add("xxxxxx" + i);
-		}
-		return list;
-	}
-
-	@ResponseBody
 	@RequestMapping("/save")
+	@ResponseBody
 	public User saveUser() {
 		log.warn("访问--------------------" + UserController.class.getResource("/"));
 		User user = new User();
-		user.setUsername("mengxy");
-		user.setPassword("mengxy");
+		user.setUsername("zhaogao");
+		user.setPassword("888888");
 		this.userService.saveUser(user);
 		return user;
 	}
 
-	@ResponseBody
 	@RequestMapping("/findbyid/{id}")
+	@ResponseBody
 	public User findById(@PathVariable long id) {
 		return this.userService.findUserById(id);
 	}
 
-	@ResponseBody
 	@RequestMapping("/findbyusername/{username}")
+	@ResponseBody
 	public List<User> findByUsername(@PathVariable String username) {
 		System.out.println("In findByUsername");
 
@@ -64,9 +48,8 @@ public class UserController {
 
 	}
 
-	
 	@RequestMapping("/findbypassword/{password}")
-	@ResponseBody 
+	@ResponseBody
 	public List<User> findByPassword(@PathVariable String password) {
 		System.out.println("In findByPassword!");
 		List<User> list = this.userService.findUserByPassword(password);
