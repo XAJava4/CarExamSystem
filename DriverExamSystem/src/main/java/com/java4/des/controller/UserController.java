@@ -40,6 +40,14 @@ public class UserController {
 		return list;
 	}
 	
+	@RequestMapping("/het")
+	@ResponseBody
+	public List<User> hetUsers() {
+		log.warn("访问--------------------" + UserController.class.getResource("/"));
+		List<User> list = this.userService.findAll();
+		return list;
+	}
+	
 	@RequestMapping("/delete/{id}")
 	@ResponseBody
 	public String deleteUserById(@PathVariable Long id) {
