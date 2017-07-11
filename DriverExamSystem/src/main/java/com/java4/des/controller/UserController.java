@@ -15,7 +15,7 @@ import com.java4.des.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+	
 	private static Logger log = Logger.getLogger(UserController.class);
 
 	@Autowired
@@ -26,8 +26,8 @@ public class UserController {
 	public User saveUser() {
 		log.warn("访问--------------------" + UserController.class.getResource("/"));
 		User user = new User();
-		user.setUsername("zhaogao");
-		user.setPassword("888888");
+		user.setUsername("zhangsan");
+		user.setPassword("123654");
 		this.userService.saveUser(user);
 		return user;
 	}
