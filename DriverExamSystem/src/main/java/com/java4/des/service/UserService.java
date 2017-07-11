@@ -11,28 +11,38 @@ import com.java4.des.repository.UserDao;
 
 //Spring Bean的标识.
 @Component
-//类中所有public函数都纳入事务管理的标识.
+// 类中所有public函数都纳入事务管理的标识.
 @Transactional
 public class UserService {
 	@Autowired
 	private UserDao userDao;
+
 	/**
 	 * 保存用户
+	 * 
 	 * @param user
 	 */
-	public void saveUser(User user){
+	public void saveUser(User user) {
 		userDao.save(user);
 	}
 
-	public List<User> findUserByUsername(String username){
+	public List<User> findAll() {
+		return (List<User>) userDao.findAll();
+	}
+
+	public void delteUser(Long id) {
+		userDao.delete(id);
+	}
+
+	public List<User> findUserByUsername(String username) {
 		return userDao.findByUsername(username);
 	}
-	
+
 	public List<User> findUserByPassword(String password) {
 		return userDao.findByPassword(password);
 	}
-	
-	public User findUserById(long id){
+
+	public User findUserById(long id) {
 		return this.userDao.findById(id);
 	}
 

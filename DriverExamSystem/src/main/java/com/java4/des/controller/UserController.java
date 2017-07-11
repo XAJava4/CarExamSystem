@@ -32,6 +32,24 @@ public class UserController {
 		return user;
 	}
 
+	@RequestMapping("/get")
+	@ResponseBody
+	public List<User> getUsers() {
+		log.warn("访问--------------------" + UserController.class.getResource("/"));
+		List<User> list = this.userService.findAll();
+		return list;
+	}
+	
+	@RequestMapping("/delete/{id}")
+	@ResponseBody
+	public String deleteUserById(@PathVariable Long id) {
+		log.warn("访问--------------------" + UserController.class.getResource("/"));
+		userService.delteUser(id);
+		return "";
+	}
+
+	
+	
 	@RequestMapping("/findbyid/{id}")
 	@ResponseBody
 	public User findById(@PathVariable long id) {
