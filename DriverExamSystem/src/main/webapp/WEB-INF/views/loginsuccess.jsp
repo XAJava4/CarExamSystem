@@ -4,12 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SSJ-HomePage</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello World!</h1>
-	<a href="user/findbyusername/zhangsan">获取用用户名</a>
-	<a href="user/findbypassword/123654">获取用密码</a>
-	<a href=" <%= request.getContextPath() %>/stuloginindex" >学员登录</a>
+	学生姓名：${stu.getStuName() }
+	教练姓名：${stu.getTeaName() }
 </body>
 </html>

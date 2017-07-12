@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SSJ-HomePage</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello World!</h1>
-	<a href="user/findbyusername/zhangsan">获取用用户名</a>
-	<a href="user/findbypassword/123654">获取用密码</a>
-	<a href=" <%= request.getContextPath() %>/stuloginindex" >学员登录</a>
+		<form action="<%=request.getContextPath()%>/stulogin"  method="post" >
+			学号：<input type="text" name="stuId" ><br/>
+			密码：<input type="password" name="stuPass" >
+			<input type="submit" > 
+		</form>
 </body>
 </html>
