@@ -11,5 +11,6 @@
 	<a href="user/findbyusername/zhangsan">获取用用户名</a>
 	<a href="user/findbypassword/123654">获取用密码</a>
 	<a href=" <%= request.getContextPath() %>/stuloginindex" >学员登录</a>
+	<a href="<%= request.getContextPath() %>/addstudent" >增加学员</a>
 </body>
 </html>

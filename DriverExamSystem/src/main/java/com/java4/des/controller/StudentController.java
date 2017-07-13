@@ -61,5 +61,8 @@ public class StudentController {
 	public String  loginindex(){
 		return "stulogin";
 	}
-	
+	@RequestMapping(value="addstudent" ,method={RequestMethod.GET} )
+	public String addstudent(){
+		return "addstudent";
+	}
 }

@@ -39,6 +39,7 @@
 
 	<!-- 定义无需Controller的url<->view直接映射 -->
 	<mvc:view-controller path="/" view-name="redirect:/index" />
+	<mvc:resources mapping="/views/**" location="/WEB-INF/views/" />
 
 	<mvc:interceptors>
 		<bean class="com.java4.des.interceptor.RequestInterceptor1"></bean>
