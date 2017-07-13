@@ -32,7 +32,7 @@ public class StudentController {
 						if (pass.equals(yanzhen)) {
 							modelAndView.addObject("stu", student2);
 							//跳转到成功界面
-							modelAndView.setViewName("loginsuccess");
+							modelAndView.setViewName("student/loginsuccess");
 						}else {
 							//学号和密码不匹配
 							modelAndView.addObject("massage", "账号密码不匹配");
@@ -59,10 +59,19 @@ public class StudentController {
 	}
 	@RequestMapping(value="stuloginindex", method={RequestMethod.GET})
 	public String  loginindex(){
-		return "stulogin";
+		return "student/stulogin";
 	}
 	@RequestMapping(value="addstudent" ,method={RequestMethod.GET} )
-	public String addstudent(){
-		return "addstudent";
+	public String addstudentg(){
+		return "student/addstudent";
+	}
+	
+	@RequestMapping(value="addstudent" ,method={RequestMethod.POST} )
+	public ModelAndView addstudent( Student student ){
+		studentService.addstudent(student);
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("message","添加成功");
+		mv.setViewName("student/addstudent");
+		return mv;
 	}
 }

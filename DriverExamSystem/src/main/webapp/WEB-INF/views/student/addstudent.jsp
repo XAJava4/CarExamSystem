@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<h2 style="color: red"> ${message} </h2>
 			<form action=" addstudent" method="post" >
 					<table>
-					<tr> <td>身份证号：</td> <td> <input type="text" name="stuId" /> </td> </tr>
+					<tr> <td>身份证号：</td> <td>      <input type="text" name="stuId" /> </td> </tr>
 					<tr> <td>姓名：</td> <td> <input type="text" name="stuName" /> </td> </tr>
 					<tr> <td>密码：</td> <td> <input type="text" name="stuPass" /> </td> </tr>
 					<tr> <td>性别：</td> <td> <input type="text" name="stuSex" /> </td> </tr>
