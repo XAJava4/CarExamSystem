@@ -10,10 +10,7 @@
 	<center>
 		<form action="<%=request.getContextPath()%>/addexam" method="post">
 			<table border="1">
-				<tr>
-					<td>题目序号：</td>
-					<td><input type="text" name="examID" id="examID" /></td>
-				</tr>
+				
 				<tr>
 					<td>题目内容：</td>
 					<td><input type="text" name="examTitle" id="examTitle" /></td>

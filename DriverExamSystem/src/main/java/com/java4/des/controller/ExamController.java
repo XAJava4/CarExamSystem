@@ -23,7 +23,7 @@ public class ExamController {
 		examService.addExam(exam);
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("message","添加成功");
-		mv.setViewName("exam/examAdd");
+		mv.setViewName("exam/examMain");
 		return mv;
 	}
 	

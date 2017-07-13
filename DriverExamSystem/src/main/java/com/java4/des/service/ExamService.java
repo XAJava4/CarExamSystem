@@ -19,7 +19,6 @@ public class ExamService {
 	public Exam findByExamID( int id ){
 		return examDao.findByExamID(id);
 	}
-	
 	public void addExam(Exam exam){
 		examDao.save(exam);
 	}
