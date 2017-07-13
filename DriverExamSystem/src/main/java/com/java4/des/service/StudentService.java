@@ -39,4 +39,8 @@ public class StudentService {
 			return  studentDao.findOne(id);
 		}
 
+			public  void update( String stuName,String stuPass,int stuSex,String teaName,int stuId  ){
+				studentDao.update(stuName, stuPass, stuSex, teaName, stuId);
+			}
+		
 }

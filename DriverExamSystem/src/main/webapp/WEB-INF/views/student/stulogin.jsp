@@ -5,6 +5,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>驾校考试系统</title>
+
+
+<script>
+        //检查id和密码是否为空
+        function check(){
+            var username= document.getElementById("stu_id");
+            if(username.value.trim()==""){//没有输入id是显示提示
+                //获取所有子节点
+                var findNodes = document.getElementById("Id").children;
+                if(findNodes.length==0){//只添加一次span
+                    var appdom= document.createElement("span");
+                    appdom.innerHTML="*ID不能为空";
+                    appdom.style.color="red";
+                    document.getElementById("Id").appendChild(appdom);
+                }
+                return false;
+            }else{//输入了内容后清除节点内容
+                var findNodes =document.getElementById("Id").children;
+                if(findNodes.length>0){
+                    document.getElementById("Id").removeChild(findNodes[0]);
+                }
+            }
+            var userpwd = document.getElementById("stu_pas");
+            if(userpwd.value.trim()==""){
+                var findNodes2 = document.getElementById("Pass").children;
+                if(findNodes2.length==0){
+                    var appdom2 = document.createElement("span");
+                    appdom2.innerHTML="*密码不能为空";
+                    appdom2.style.color="red";
+                    document.getElementById("Pass").appendChild(appdom2);
+                }
+                return false;
+            }else{
+                var findNodes2 = document.getElementById("Pass").children;
+                if(findNodes2.length>0){
+                    document.getElementById("Pass").removeChild(findNodes2[0]);
+                }
+            }
+        }
+    </script>
+
 <style type="text/css">
 body {
 	position: inherit;
@@ -100,18 +141,14 @@ textarea {
 
 		<form action="<%= request.getContextPath() %>/stulogin" method="post" >
 			<table>
-				<tr>
-					<td id="td001">准考号：</td>
-					<td><input type="text" name="stuId" /></td>
-				</tr>
-				<tr>
-					<td id="td001">密码：</td>
-					<td><input type="password" name="stuPass" /></td>
-				</tr>
+				<tr><td id="td001">准考号：</td>
+					<td><input type="text" name="stuId" id="stu_id"/></td><em id="Id"></em></tr>
+				<tr><td id="td001">密码：</td>
+					<td><input type="password" name="stuPass" id="stu_pas"/></td><em id="Pass"></tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="进入考试系统"
-						style="width: 250px; height: 30px;" /></td>
+					<td><input type="submit" value="进入考试系统" onclick="return check()"
+						style="width: 250px; height: 30px;"  /></td>
 				</tr>
 
 			</table>

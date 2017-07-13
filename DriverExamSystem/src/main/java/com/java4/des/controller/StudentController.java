@@ -26,7 +26,6 @@ public class StudentController {
 	public ModelAndView stuLogin( HttpServletRequest request,HttpServletResponse response, Student student ){
 			int id=student.getStuId();
 			String pass=student.getStuPass();
-			ModelAndView modelAndView=new ModelAndView();
 			//先判断id是否为空 
 			if (null!=Integer.toString(id)) {
 				if (null!=pass) {
@@ -40,24 +39,26 @@ public class StudentController {
 							modelAndView.setViewName("student/loginsuccess");
 						}else {
 							//学号和密码不匹配
-							modelAndView.addObject("massage", "账号密码不匹配");
+							modelAndView.addObject("massage4", "账号密码不匹配");
 							//返回登录界面
-							
+							modelAndView.setViewName("student/stulogin");
 						}
 					}else {
 						//这个学员不存在
-						modelAndView.addObject("massage", "该学员不存在");
+						modelAndView.addObject("massage3", "该学员不存在");
 						//返回登录界面
-						
+						modelAndView.setViewName("student/stulogin");
 					}
 				}else {
 					//密码不能为空
-					modelAndView.addObject("massage", "密码不能为空");
+					modelAndView.addObject("massage2", "密码不能为空");
+					modelAndView.setViewName("student/stulogin");
 				}
 				
 			}else {
 				//写一个学生id不能为空的信息
-				modelAndView.addObject("massage", "学号不能为空");
+				modelAndView.addObject("massage1", "学号不能为空");
+				modelAndView.setViewName("student/stulogin");
 			}
 			
 			return modelAndView;
@@ -111,11 +112,39 @@ public class StudentController {
 		@RequestMapping(value="/getOne",method={RequestMethod.POST} )
 		public ModelAndView getOne( HttpServletRequest request ){
 			 String id= request.getParameter("stuId");
+			 if (""==id) {
+				 List<Student> list=new ArrayList<>();
+				modelAndView.addObject("list", list);
+				modelAndView.setViewName("student/studentindex");
+			}
 			 Student student=studentService.getOne(Integer.parseInt(id));
-			 List< Student> list =new ArrayList<>();
-			 list.add(student);
-			 modelAndView.addObject("list", list);
-			 modelAndView.setViewName("student/studentindex");
+			 if (null==student) {
+				 List<Student> list=new ArrayList<>();
+				modelAndView.addObject("list", list);
+				modelAndView.setViewName("student/studentindex");
+			}else {
+				List< Student> list =new ArrayList<>();
+				list.add(student);
+				modelAndView.addObject("list", list);
+				modelAndView.setViewName("student/studentindex");
+				
+			}
 			 return modelAndView;
+		}
+		
+		//更新页面
+		@RequestMapping(value="/updatestudent/{id}",method={RequestMethod.GET})
+		public ModelAndView update( @PathVariable Integer id ){
+			Student student=studentService.getOne(id);
+			modelAndView.addObject("stu", student);
+			modelAndView.setViewName("student/updatestudent");
+			return modelAndView;
+		}
+		
+		//更新
+		@RequestMapping(value="/update", method={RequestMethod.POST})
+		public String upStudent( Student student ){
+			studentService.update(student.getStuName(), student.getStuPass(), student.getStuSex(), student.getTeaName(), student.getStuId());
+				return "redirect:/findAll";
 		}
 }
