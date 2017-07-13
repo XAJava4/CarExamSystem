@@ -1,10 +1,14 @@
 package com.java4.des.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +20,7 @@ import com.java4.des.service.StudentService;
 public class StudentController {
 	@Autowired
 	private StudentService studentService;
+	private ModelAndView modelAndView=new ModelAndView();
 	
 	@RequestMapping(value="/stulogin" ,method={RequestMethod.POST})
 	public ModelAndView stuLogin( HttpServletRequest request,HttpServletResponse response, Student student ){
@@ -61,17 +66,56 @@ public class StudentController {
 	public String  loginindex(){
 		return "student/stulogin";
 	}
+	
+	
 	@RequestMapping(value="addstudent" ,method={RequestMethod.GET} )
 	public String addstudentg(){
 		return "student/addstudent";
 	}
-	
+	// 增加页面
 	@RequestMapping(value="addstudent" ,method={RequestMethod.POST} )
 	public ModelAndView addstudent( Student student ){
 		studentService.addstudent(student);
-		ModelAndView mv=new ModelAndView();
-		mv.addObject("message","添加成功");
-		mv.setViewName("student/addstudent");
-		return mv;
+		modelAndView.addObject("message","添加成功");
+		modelAndView.setViewName("student/addstudent");
+		return modelAndView;
 	}
+	// 查看学员
+	@RequestMapping(value="/findAll" ,method={RequestMethod.GET,RequestMethod.POST} )
+	public ModelAndView findAll(){
+		List<Student>  list=studentService.findAll();
+		modelAndView.addObject("list", list);
+		modelAndView.setViewName("student/studentindex");
+		return modelAndView;
+	}
+	
+	//删除
+	@RequestMapping(value="/deleteStudent/{id}" ,method={RequestMethod.GET} )
+	public String  deleteStudent( HttpServletRequest request,@PathVariable Integer id  ){
+		studentService.delete(id);
+		return "redirect:/findAll";
+		
+	}
+	//多删除
+	@RequestMapping(value="/deleteStudent" ,method={RequestMethod.POST} )
+	public String  deleteList( HttpServletRequest request ){
+		String[] ids=request.getParameterValues("gou");
+		if (null !=ids) {
+			for (String id : ids) {
+				studentService.delete(Integer.parseInt(id));
+			}
+			
+		}
+		return "redirect:/findAll";
+	}
+		@RequestMapping(value="/getOne",method={RequestMethod.POST} )
+		public ModelAndView getOne( HttpServletRequest request ){
+			 String id= request.getParameter("stuId");
+			 Student student=studentService.getOne(Integer.parseInt(id));
+			 List< Student> list =new ArrayList<>();
+			 list.add(student);
+			 modelAndView.addObject("list", list);
+			 modelAndView.setViewName("student/studentindex");
+			 return modelAndView;
+		}
 }

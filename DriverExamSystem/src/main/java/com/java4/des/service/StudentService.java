@@ -1,5 +1,7 @@
 package com.java4.des.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +24,19 @@ public class StudentService {
 		public  void  addstudent( Student student ){
 			studentDao.save(student);
 		}
+		
+		public List<Student> findAll(){
+			return  (List<Student>) studentDao.findAll();
+		}
+			
+		public void delete( Integer id){
+				studentDao.delete(id);
+			
+		}
+		
+		public Student getOne(Integer id){
+			
+			return  studentDao.findOne(id);
+		}
+
 }

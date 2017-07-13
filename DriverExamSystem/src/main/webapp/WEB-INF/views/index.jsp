@@ -12,5 +12,6 @@
 	<a href="user/findbypassword/123654">获取用密码</a>
 	<a href=" <%= request.getContextPath() %>/stuloginindex" >学员登录</a>
 	<a href="<%= request.getContextPath() %>/addstudent" >增加学员</a>
+	<a href="<%= request.getContextPath() %>/findAll" >查看所有学员</a>
 </body>
 </html>

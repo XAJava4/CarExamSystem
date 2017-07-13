@@ -7,16 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<a href="<%= request.getContextPath() %>/findAll" > 查看所有学员 </a>
 		<h2 style="color: red"> ${message} </h2>
 			<form action=" addstudent" method="post" >
 					<table>
-					<tr> <td>身份证号：</td> <td>      <input type="text" name="stuId" /> </td> </tr>
+					<tr> <td>身份证号：</td> <td><input type="text" name="stuId" /> </td> </tr>
 					<tr> <td>姓名：</td> <td> <input type="text" name="stuName" /> </td> </tr>
 					<tr> <td>密码：</td> <td> <input type="text" name="stuPass" /> </td> </tr>
-					<tr> <td>性别：</td> <td> <input type="text" name="stuSex" /> </td> </tr>
+					<tr> <td>性别：</td> <td> <input type="radio" name="stuSex" value="1" checked="checked" />男  &nbsp;&nbsp;&nbsp; <input type="radio" name="stuSex" value="2" />女  </tr>
 					<tr> <td>教练名：</td> <td> <input type="text" name="teaName" /> </td> </tr>
 					<tr> <td colspan="2" > <input type="submit" />  <input type="reset" /> </td></tr>
-					
 					</table>
 				
 			
