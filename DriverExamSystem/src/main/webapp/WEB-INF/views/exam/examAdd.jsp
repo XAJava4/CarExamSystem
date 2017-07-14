@@ -47,37 +47,41 @@
 				  </tr>
 				  <tr>
 					<td>试题题目:</td>
-					<td><input type="text" name="examTitle" id="examTitle" size="80" ></td>
+					<td><input type="text" name="examTitle" id="examTitle"  size="80" value="${exam.examTitle}"></td>
 				  </tr>
 				  <tr>
 					<td>选项A:</td>
-					<td><input type="text" name="examOptionA" id="examOptionA" size="20" ></td>
+					<td><input type="text" name="examOptionA" id="examOptionA" size="20" value="${exam.examOptionA}" ></td>
 				  </tr>
 				   <tr>
 					<td>选项B:</td>
-					<td><input type="text" name="examOptionB" id="examOptionB" size="20" ></td>
+					<td><input type="text" name="examOptionB" id="examOptionB" size="20" value="${exam.examOptionB}"></td>
 				  </tr>
 				   <tr>
 					<td>选项C:</td>
-					<td><input type="text" name="examOptionC" id="examOptionC" size="20" ></td>
+					<td><input type="text" name="examOptionC" id="examOptionC" size="20" value="${exam.examOptionC}"></td>
 				  </tr>
 				   <tr>
 					<td>选项D:</td>
-					<td><input type="text" name="examOptionD" id="examOptionD" size="20" ></td>
+					<td><input type="text" name="examOptionD" id="examOptionD" size="20" value="${exam.examOptionD}"></td>
 				  </tr>
 				   <tr>
 					<td>答案:</td>
 					<td>
-						<input name="examAnswer" type="radio" value="A" checked>A
-						<input name="examAnswer" type="radio" value="B">B
-						<input name="examAnswer" type="radio" value="C">C
-						<input name="examAnswer" type="radio" value="D">D
+						<input name="examAnswer" type="radio" value="A" 
+						${subject.subjectAnswer == "A" ? "checked" : ""}>A
+						<input name="examAnswer" type="radio" value="B"
+						${subject.subjectAnswer == "B" ? "checked" : ""}>B
+						<input name="examAnswer" type="radio" value="C"
+						${subject.subjectAnswer == "C" ? "checked" : ""}>C
+						<input name="examAnswer" type="radio" value="D"
+						${subject.subjectAnswer == "D" ? "checked" : ""}>D
 					</td>
 				  </tr>
 				  <tr>
 					<td valign="top">试题解析:</td>
 					<td>
-						<textarea id="examParse" name="examParse" cols="76" rows="10"></textarea>
+						<textarea id="examParse" name="examParse" cols="76" rows="10" value="${exam.examParse}" ></textarea>
 					</td>
 				  </tr>
 				  <tr>

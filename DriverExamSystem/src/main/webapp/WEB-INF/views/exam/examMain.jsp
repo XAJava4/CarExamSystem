@@ -60,7 +60,7 @@
 							<td>${list.examTitle}</td>
 							<td>${list.examAnswer}</td>
 							<td><a href="<%=request.getContextPath()%>/getOneExam/${list.examID}">查看</a></td>
-							<td><a href="subjectUpadateBefore.action?subjectID=${subject.subjectID}">更新</a></td>
+							<td><a href="<%=request.getContextPath()%>/updateExam/${list.examID}">更新</a></td>
 							<td><a href="<%=request.getContextPath()%>/deleteExam/${list.examID}" >删除</a></td>
 					  </tr>
 				  </c:forEach>

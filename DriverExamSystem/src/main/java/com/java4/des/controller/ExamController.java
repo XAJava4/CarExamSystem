@@ -44,6 +44,17 @@ public class ExamController {
 		return mv;
 	}
 	
+	//更新试题
+	@RequestMapping(value="updateExam/{examID}" ,method={RequestMethod.GET} )
+	public ModelAndView UpdateExam(@PathVariable int examID ){
+		Exam exam=examService.getOne(examID);
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("exam",exam);
+		mv.setViewName("exam/examAdd");
+		return mv;
+	}
+	
+	
 	//获取所有试题
 	@RequestMapping(value="getAllexam" ,method={RequestMethod.GET} )
 	public ModelAndView getAllExam(){
@@ -64,7 +75,6 @@ public class ExamController {
 		mv.setViewName("exam/examMain");
 		return mv;
 	}
-	
 	
 	
 
