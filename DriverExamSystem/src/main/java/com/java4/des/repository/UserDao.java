@@ -14,6 +14,10 @@ public interface UserDao extends PagingAndSortingRepository<User, Long> {
 	
 	public List<User> findByPassword(String password);
 	
-	@Query(value = "SELECT * FROM mxy_user WHERE id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM admin WHERE id = ?1", nativeQuery = true)
 	public User findById(Long id);
+
+
+	@Query(value="SELECT * FROM admin WHERE username = ?1 and password=?2", nativeQuery = true)
+	public List<User> findByUsernameAndPassword(String username,String password);
 }

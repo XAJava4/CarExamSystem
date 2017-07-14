@@ -4,15 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SSJ-HomePage</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello World!</h1>
-	<a href="user/findbyusername/zhangsan">获取用用户名</a>
-	<a href="user/findbypassword/123654">获取用密码</a><br>
-	<a href="<%=request.getContextPath()%>/user/validator">校验登录</a>
-	
-	<%-- <form action="<%= request.getContextPath()%>/user/login" method="post">
+	<form action="/user/save1" method="post">
 	<table>
      		<tr>
      		<td>用户名</td>
@@ -26,11 +21,12 @@
      		 </tr>
      		<tr>
      		<td>
-     		<input type="submit" value="submit" id="submit" />
+     		<input type="submit" value="save" />
      		</td>
      		<td><input type="reset"  value="reset"/></td>
      		 </tr>
      	</table>
-     	</form> --%>
+     	</form>
+     
 </body>
 </html>
