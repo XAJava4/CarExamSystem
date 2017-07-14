@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java4.des.entity.Exam;
+import com.java4.des.entity.User;
 import com.java4.des.service.ExamService;
 
 @Controller
@@ -21,10 +23,12 @@ public class ExamController {
 	@Autowired
 	private ExamService examService;
 	
+	
 	@RequestMapping(value="addexam" ,method={RequestMethod.GET} )
 	public String addexam(){
 		return "exam/examAdd";
 	}
+	//添加试题
 	@RequestMapping(value="addexam" ,method={RequestMethod.POST} )
 	public ModelAndView addExam(Exam exam ){
 		examService.addExam(exam);
@@ -34,6 +38,18 @@ public class ExamController {
 		mv.setViewName("exam/examMain");
 		return mv;
 	}
+	
+	//获取一个试题
+	@RequestMapping(value="getOneExam/{examID}" ,method={RequestMethod.GET} )
+	public ModelAndView getOneExam(@PathVariable int examID ){
+		Exam exam=examService.findByExamID(examID);
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("exam",exam);
+		mv.setViewName("exam/examList");
+		return mv;
+	}
+	
+	//获取所有试题
 	@RequestMapping(value="getAllexam" ,method={RequestMethod.GET} )
 	public ModelAndView getAllExam(){
 		List<Exam> list=examService.getAllExams();
@@ -43,6 +59,7 @@ public class ExamController {
 		return mv;
 	}
 	
+	//根据id删除试题
 	@RequestMapping(value="deleteExam/{examID}" ,method={RequestMethod.GET} )
 	public ModelAndView deleteExamById(@PathVariable Integer examID) {
 		examService.delteExam(examID);

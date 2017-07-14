@@ -19,9 +19,10 @@ public class ExamService {
 	@Autowired
 	private ExamDao examDao;
 	
-	public Exam findByExamID( int id ){
-		return examDao.findByExamID(id);
+	public Exam findByExamID( int examID ){
+		return examDao.findByExamID(examID);
 	}
+	
 	public void addExam(Exam exam){
 		examDao.save(exam);
 	}
