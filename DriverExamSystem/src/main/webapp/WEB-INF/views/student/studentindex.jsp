@@ -4,8 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-<script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/views/script/jquery.min.js" ></script>
+<script>	
+		$(function () {
         //检查用户名和密码是否为空
         function check(){
             var username= document.getElementById("stu_id");
@@ -25,8 +26,16 @@
                     document.getElementById("Id").removeChild(findNodes[0]);
                 }
             }
-
-            }
+}
+        	$(".delete").click(function() {
+            	var stuId=$(this).next(":hiden").val();
+            	var flag=confirm("确定要删除"+stuId+"信息吗？")
+            	if (flag) {
+					return false;
+				}
+				return false;
+			})
+		})
     </script>
 
 
@@ -104,7 +113,8 @@ div {
 					<td>${list.stuScore}</td>
 					<td>${list.teaName}</td>
 					<td><a
-						href=" <%=request.getContextPath() %>/deleteStudent/${list.stuId}">删除</a>
+						class="delete" href=" <%=request.getContextPath() %>/deleteStudent/${list.stuId}">删除</a>
+						<input type="hidden"  value="${list.stuId}" />
 					<a href=" <%=request.getContextPath() %>/updatestudent/${list.stuId}">更新</a>
 					
 					</td>

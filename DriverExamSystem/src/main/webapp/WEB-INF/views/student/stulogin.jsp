@@ -5,9 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>驾校考试系统</title>
+<script type="text/javascript" src="<%=request.getContextPath()%>/views/script/jquery.min.js" ></script>
+<script type="text/javascript">
 
+$(function () {
+	
+})
+
+</script>
 
 <script>
+
         //检查id和密码是否为空
         function check(){
             var username= document.getElementById("stu_id");
@@ -138,7 +146,9 @@ textarea {
 
 		<p>&nbsp;</p>
 
-
+		<span class="message">${massage4}</span>
+		<span class="message">${massage3}</span>
+	
 		<form action="<%= request.getContextPath() %>/stulogin" method="post" >
 			<table>
 				<tr><td id="td001">准考号：</td>

@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java4.des.entity.Student;
@@ -146,5 +148,19 @@ public class StudentController {
 		public String upStudent( Student student ){
 			studentService.update(student.getStuName(), student.getStuPass(), student.getStuSex(), student.getTeaName(), student.getStuId());
 				return "redirect:/findAll";
+		}
+		
+		//校验用户是可用
+		@ResponseBody 
+		@RequestMapping(value="/varlidate",method={RequestMethod.POST} )
+		public Integer validate( @RequestBody Integer stuId ){
+			  Student student= studentService.getOne(stuId);
+			 Integer i;
+			  if (null!=student) {
+				  i=new  Integer("1");
+			}else {
+				 i=new  Integer("0");
+			}
+			  return i;
 		}
 }
