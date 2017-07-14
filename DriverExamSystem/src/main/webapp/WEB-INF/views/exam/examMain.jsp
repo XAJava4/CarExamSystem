@@ -63,7 +63,7 @@
 							<td><a href="subjectUpadateBefore.action?subjectID=${subject.subjectID}">更新</a></td>
 							<td><a href="<%=request.getContextPath()%>/deleteExam/${list.examID}" >删除</a></td>
 					  </tr>
-				  </c:forEach>>	
+				  </c:forEach>
 				  <tr>
 				  	<td colspan="6" align="center">
 				  		共${page.totalCount}条纪录，当前第${page.currentPage}/${page.totalPage}页，每页${page.everyPage}条纪录

@@ -8,15 +8,15 @@
 </head>
 <body>
 	<center>
-		<form action="">
-			<table>
+		<form action="<%=request.getContextPath()%>/getAllexam" method="get">
+			<table border="1">
 				<tr>
 					<td>试题编号</td>
 					<td>${exam.examID}</td>
 				</tr>
 				<tr>
 					<td>试题标题</td>
-					<td>${exam.examTilte}</td>
+					<td>${exam.examTitle}</td>
 				</tr>
 				<tr>
 					<td>选项A</td>
@@ -41,6 +41,9 @@
 				<tr>
 					<td>试题解析</td>
 					<td>${exam.examParse}</td>
+				</tr>
+				<tr>
+				<td colspan="2"><div align="center"><input type="submit" value="返回"></div></td>
 				</tr>
 			</table>
 		</form>

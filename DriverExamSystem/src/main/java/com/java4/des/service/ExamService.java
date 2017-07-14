@@ -33,8 +33,8 @@ public class ExamService {
 	}
 	
 	public Exam getOne(Integer examID){
-		Exam exam=examDao.findOne(examID);
-		return exam;
+		
+		return examDao.findOne(examID);
 	}
 	
 	public void delteExam(Integer examID) {
