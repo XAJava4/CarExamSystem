@@ -46,4 +46,10 @@ public class UserService {
 		return this.userDao.findById(id);
 	}
 
+	public List<User> findByUsernameAndPassword(String username, String password) {
+	System.out.println("服务层组件"+username+password+"-----");
+		return userDao.findByUsernameAndPassword(username, password);
+	
+	}
+
 }

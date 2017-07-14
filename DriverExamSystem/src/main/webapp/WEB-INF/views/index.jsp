@@ -15,6 +15,7 @@
 	<a href="<%=request.getContextPath()%>/findAll">查看所有学员</a>
 	<%-- <a href="<%=request.getContextPath()%>/addexam">增加试题</a> --%>
 	<a href="<%=request.getContextPath()%>/getAllexam">试题管理</a>
-
+	<a href="user/findbypassword/123654">获取用密码</a><br>
+	<a href="<%=request.getContextPath()%>/user/validator">校验登录</a>
 </body>
 </html>
