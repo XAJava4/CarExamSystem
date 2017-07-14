@@ -10,6 +10,7 @@
 	<h1>Hello World!</h1>
 	<a href="user/findbyusername/zhangsan">获取用用户名</a>
 	<a href="user/findbypassword/123654">获取用密码</a>
-	<a href="<%=request.getContextPath()%>/addexam">增加试题</a>
+	<%-- <a href="<%=request.getContextPath()%>/addexam">增加试题</a> --%>
+	<a href="<%=request.getContextPath()%>/getAllexam">试题管理</a>
 </body>
 </html>

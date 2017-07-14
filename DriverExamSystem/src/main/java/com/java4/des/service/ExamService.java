@@ -1,5 +1,8 @@
 package com.java4.des.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +24,20 @@ public class ExamService {
 	}
 	public void addExam(Exam exam){
 		examDao.save(exam);
+	}
+	
+	public List<Exam> getAllExams(){
+		List<Exam> list = (List<Exam>) examDao.findAll();
+		return list;
+	}
+	
+	public Exam getOne(Integer examID){
+		Exam exam=examDao.findOne(examID);
+		return exam;
+	}
+	
+	public void delteExam(Integer examID) {
+		examDao.delete(examID);
 	}
 }
 
