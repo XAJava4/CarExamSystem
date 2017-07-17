@@ -34,7 +34,7 @@ public class ExamController {
 		return mv;
 	}
 	
-	//获取一个试题
+	//获取一个试题查看试题
 	@RequestMapping(value="getOneExam/{examID}" ,method={RequestMethod.GET} )
 	public ModelAndView getOneExam(@PathVariable int examID ){
 		Exam exam=examService.getOne(examID);
@@ -44,15 +44,29 @@ public class ExamController {
 		return mv;
 	}
 	
-	//更新试题
+	//获取更新更新试题
 	@RequestMapping(value="updateExam/{examID}" ,method={RequestMethod.GET} )
 	public ModelAndView UpdateExam(@PathVariable int examID ){
 		Exam exam=examService.getOne(examID);
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("exam",exam);
-		mv.setViewName("exam/examAdd");
+		mv.setViewName("exam/examUpdate");
 		return mv;
 	}
+	//更新试题
+	@RequestMapping(value="updateExam1" ,method={RequestMethod.POST} )
+	public ModelAndView updateExam(Exam exam ){
+		examService.updateExam(exam);
+		List<Exam> list=examService.getAllExams();
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("list",list);
+		mv.setViewName("exam/examMain");
+		
+		
+		return mv;
+	}
+	
+	
 	
 	
 	//获取所有试题

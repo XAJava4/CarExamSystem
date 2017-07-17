@@ -69,13 +69,13 @@
 					<td>答案:</td>
 					<td>
 						<input name="examAnswer" type="radio" value="A" 
-						${subject.subjectAnswer == "A" ? "checked" : ""}>A
+						${exam.examAnswer == "A" ? "checked" : ""}>A
 						<input name="examAnswer" type="radio" value="B"
-						${subject.subjectAnswer == "B" ? "checked" : ""}>B
+						${exam.examAnswer == "B" ? "checked" : ""}>B
 						<input name="examAnswer" type="radio" value="C"
-						${subject.subjectAnswer == "C" ? "checked" : ""}>C
+						${exam.examAnswer == "C" ? "checked" : ""}>C
 						<input name="examAnswer" type="radio" value="D"
-						${subject.subjectAnswer == "D" ? "checked" : ""}>D
+						${exam.examAnswer == "D" ? "checked" : ""}>D
 					</td>
 				  </tr>
 				  <tr>
