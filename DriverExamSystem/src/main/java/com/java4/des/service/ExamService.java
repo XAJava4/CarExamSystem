@@ -18,27 +18,32 @@ public class ExamService {
 	//自动注入Dao层组件
 	@Autowired
 	private ExamDao examDao;
-	
+	//查找一个
 	public Exam findByExamID( int examID ){
 		return examDao.findByExamID(examID);
 	}
-	
+	//添加
 	public void addExam(Exam exam){
 		examDao.save(exam);
 	}
-	
+	//获取所有
 	public List<Exam> getAllExams(){
 		List<Exam> list = (List<Exam>) examDao.findAll();
 		return list;
 	}
-	
+	//获取一个
 	public Exam getOne(Integer examID){
-		Exam exam=examDao.findOne(examID);
-		return exam;
+		
+		return examDao.findOne(examID);
 	}
-	
+	//删除
 	public void delteExam(Integer examID) {
 		examDao.delete(examID);
+	}
+	
+	//更新试题
+	public void updateExam(Exam exam){
+		examDao.save(exam);
 	}
 }
 

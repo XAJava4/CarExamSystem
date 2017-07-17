@@ -1,21 +1,16 @@
 package com.java4.des.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java4.des.entity.Exam;
-import com.java4.des.entity.User;
 import com.java4.des.service.ExamService;
 
 @Controller
@@ -39,15 +34,40 @@ public class ExamController {
 		return mv;
 	}
 	
-	//获取一个试题
+	//获取一个试题查看试题
 	@RequestMapping(value="getOneExam/{examID}" ,method={RequestMethod.GET} )
 	public ModelAndView getOneExam(@PathVariable int examID ){
-		Exam exam=examService.findByExamID(examID);
+		Exam exam=examService.getOne(examID);
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("exam",exam);
 		mv.setViewName("exam/examList");
 		return mv;
 	}
+	
+	//获取更新更新试题
+	@RequestMapping(value="updateExam/{examID}" ,method={RequestMethod.GET} )
+	public ModelAndView UpdateExam(@PathVariable int examID ){
+		Exam exam=examService.getOne(examID);
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("exam",exam);
+		mv.setViewName("exam/examUpdate");
+		return mv;
+	}
+	//更新试题
+	@RequestMapping(value="updateExam1" ,method={RequestMethod.POST} )
+	public ModelAndView updateExam(Exam exam ){
+		examService.updateExam(exam);
+		List<Exam> list=examService.getAllExams();
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("list",list);
+		mv.setViewName("exam/examMain");
+		
+		
+		return mv;
+	}
+	
+	
+	
 	
 	//获取所有试题
 	@RequestMapping(value="getAllexam" ,method={RequestMethod.GET} )
@@ -69,7 +89,6 @@ public class ExamController {
 		mv.setViewName("exam/examMain");
 		return mv;
 	}
-	
 	
 	
 

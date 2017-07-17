@@ -40,10 +40,14 @@
       <tr>
         <td valign="middle"><span class="left_txt">
 			<div id="addExamForm" align="center"><!--录入试题表单-->
-				<form action="<%=request.getContextPath()%>/addexam" method="post">
+				<form action="<%=request.getContextPath()%>/updateExam1" method="post">
 				<table border="0" cellspacing="10" cellpadding="0">
 				  <tr>
 					<td colspan="2"><FONT color="red"><s:actionerror/></FONT></td>
+				  </tr>
+				  <tr>
+					<td>试题题目:</td>
+					<td><input type="text" name="examID" id="examID"  size="80" value="${exam.examID}" readonly="readonly"></td>
 				  </tr>
 				  <tr>
 					<td>试题题目:</td>
