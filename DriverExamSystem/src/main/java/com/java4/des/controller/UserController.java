@@ -59,8 +59,15 @@ public class UserController {
 		}
 		//校验并登陆
 	@RequestMapping(value = "/vandlogin", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView loginJsr(@Valid @ModelAttribute User user,BindingResult result,	Errors errors,Model model,HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView loginJsr(User user,BindingResult result,	Errors errors,Model model,HttpServletRequest request, HttpServletResponse response){
 		ModelAndView mv =new ModelAndView();
+		String  id=	request.getParameter("id");
+		if ("2".equals(id)) {
+			request.getSession().setAttribute("username", user.getUsername());
+			request.getSession().setAttribute("password", user.getPassword());
+			mv.setViewName("redirect:/stulogin");
+			return mv;
+		}else {
 		if (errors.hasErrors()) {
 			mv.setViewName("validatorTest");
 			return mv;
@@ -68,10 +75,10 @@ public class UserController {
 		List<User> list = userService.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 		if (list.size() > 0) {
 			mv.addObject("list", list);
-			mv.setViewName("cheng");
+			mv.setViewName("adminindex");
 			return mv;
 		} else { 
-			request.setAttribute("error", "密码或账号错误");
+			request.setAttribute("message", "密码或账号错误");
 			mv.setViewName("redirect:index");
 			return mv;
 			}
@@ -79,7 +86,7 @@ public class UserController {
 		}
 	}
 
-
+	}
 	
 	
 	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })

@@ -24,10 +24,10 @@ public class StudentController {
 	private StudentService studentService;
 	private ModelAndView modelAndView=new ModelAndView();
 	
-	@RequestMapping(value="/stulogin" ,method={RequestMethod.POST})
-	public ModelAndView stuLogin( HttpServletRequest request,HttpServletResponse response, Student student ){
-			int id=student.getStuId();
-			String pass=student.getStuPass();
+	@RequestMapping(value="/stulogin" ,method={RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView stuLogin( HttpServletRequest request,HttpServletResponse response ){
+			int id=Integer.parseInt((String) request.getSession().getAttribute("username"));
+			String  pass=(String) request.getSession().getAttribute("password");
 			//先判断id是否为空 
 			if (null!=Integer.toString(id)) {
 				if (null!=pass) {
@@ -41,26 +41,40 @@ public class StudentController {
 							modelAndView.setViewName("student/loginsuccess");
 						}else {
 							//学号和密码不匹配
+							modelAndView.clear();;
 							modelAndView.addObject("massage4", "账号密码不匹配");
 							//返回登录界面
-							modelAndView.setViewName("student/stulogin");
+							modelAndView.setViewName("index");
+							
+							request.getSession().removeAttribute("username");
+							request.getSession().removeAttribute("password");
 						}
 					}else {
 						//这个学员不存在
+						modelAndView.clear();
 						modelAndView.addObject("massage3", "该学员不存在");
 						//返回登录界面
-						modelAndView.setViewName("student/stulogin");
+						modelAndView.setViewName("index");
+					
+						request.getSession().removeAttribute("username");
+						request.getSession().removeAttribute("password");
 					}
 				}else {
 					//密码不能为空
 					modelAndView.addObject("massage2", "密码不能为空");
-					modelAndView.setViewName("student/stulogin");
+					modelAndView.setViewName("index");
+				
+					request.getSession().removeAttribute("username");
+					request.getSession().removeAttribute("password");
 				}
 				
 			}else {
 				//写一个学生id不能为空的信息
 				modelAndView.addObject("massage1", "学号不能为空");
-				modelAndView.setViewName("student/stulogin");
+				modelAndView.setViewName("index");
+			
+				request.getSession().removeAttribute("username");
+				request.getSession().removeAttribute("password");
 			}
 			
 			return modelAndView;
