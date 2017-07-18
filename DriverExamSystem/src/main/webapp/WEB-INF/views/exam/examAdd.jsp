@@ -23,13 +23,13 @@
 <body> 
  <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="17" valign="top" background="../images/mail_leftbg.gif"><img src="../images/left-top-right.gif" width="17" height="29" /></td>
+    <td width="17" valign="top" background="../images/mail_leftbg.gif"></td>
     <td valign="top" background="../images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
       <tr>
         <td height="31"><div class="titlebt">录入试题</div></td>
       </tr>
     </table></td>
-    <td width="16" valign="top" background="images/mail_rightbg.gif"><img src="images/nav-right-bg.gif" width="16" height="29" /></td>
+    <td width="16" valign="top" background="images/mail_rightbg.gif"></td>
   </tr>
   <tr>
     <td valign="middle" background="images/mail_leftbg.gif">&nbsp;</td>
@@ -47,35 +47,31 @@
 				  </tr>
 				  <tr>
 					<td>试题题目:</td>
-					<td><input type="text" name="examTitle" id="examTitle"  size="80" value="${exam.examTitle}"></td>
+					<td><input type="text" name="examTitle" id="examTitle"  size="80"></td>
 				  </tr>
 				  <tr>
 					<td>选项A:</td>
-					<td><input type="text" name="examOptionA" id="examOptionA" size="20" value="${exam.examOptionA}" ></td>
+					<td><input type="text" name="examOptionA" id="examOptionA" size="20"></td>
 				  </tr>
 				   <tr>
 					<td>选项B:</td>
-					<td><input type="text" name="examOptionB" id="examOptionB" size="20" value="${exam.examOptionB}"></td>
+					<td><input type="text" name="examOptionB" id="examOptionB" size="20" ></td>
 				  </tr>
 				   <tr>
 					<td>选项C:</td>
-					<td><input type="text" name="examOptionC" id="examOptionC" size="20" value="${exam.examOptionC}"></td>
+					<td><input type="text" name="examOptionC" id="examOptionC" size="20"></td>
 				  </tr>
 				   <tr>
 					<td>选项D:</td>
-					<td><input type="text" name="examOptionD" id="examOptionD" size="20" value="${exam.examOptionD}"></td>
+					<td><input type="text" name="examOptionD" id="examOptionD" size="20"></td>
 				  </tr>
 				   <tr>
 					<td>答案:</td>
 					<td>
-						<input name="examAnswer" type="radio" value="A" 
-						${exam.examAnswer == "A" ? "checked" : ""}>A
-						<input name="examAnswer" type="radio" value="B"
-						${exam.examAnswer == "B" ? "checked" : ""}>B
-						<input name="examAnswer" type="radio" value="C"
-						${exam.examAnswer == "C" ? "checked" : ""}>C
-						<input name="examAnswer" type="radio" value="D"
-						${exam.examAnswer == "D" ? "checked" : ""}>D
+						<input name="examAnswer" type="radio" value="A" checked="checked">A
+						<input name="examAnswer" type="radio" value="B">B
+						<input name="examAnswer" type="radio" value="C">C
+						<input name="examAnswer" type="radio" value="D">D
 					</td>
 				  </tr>
 				  <tr>
@@ -101,9 +97,9 @@
     <td background="images/mail_rightbg.gif">&nbsp;</td>
   </tr>
   <tr>
-    <td valign="bottom" background="images/mail_leftbg.gif"><img src="images/buttom_left2.gif" width="17" height="17" /></td>
+    <!-- <td valign="bottom" background="images/mail_leftbg.gif"><img src="images/buttom_left2.gif" width="17" height="17" /></td>
     <td background="images/buttom_bgs.gif"><img src="images/buttom_bgs.gif" width="17" height="17"></td>
-    <td valign="bottom" background="images/mail_rightbg.gif"><img src="images/buttom_right2.gif" width="16" height="17" /></td>
+    <td valign="bottom" background="images/mail_rightbg.gif"><img src="images/buttom_right2.gif" width="16" height="17" /></td> -->
   </tr>
 </table>
 </body>

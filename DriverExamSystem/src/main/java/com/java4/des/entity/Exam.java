@@ -65,6 +65,4 @@ public class Exam {
 	public void setExamParse(String examParse) {
 		this.examParse = examParse;
 	}
-	
-	
 }
