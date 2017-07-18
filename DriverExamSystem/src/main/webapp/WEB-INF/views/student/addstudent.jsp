@@ -28,7 +28,7 @@
 <body>
 	<a href="<%=request.getContextPath()%>/findAll"> 查看所有学员 </a>
 	<h2 style="color: red">${message}</h2>
-	<form action=" addstudent" method="post">
+	<form action="/addstudent" method="post">
 		<table>
 			<tr>
 				<td>身份证号：</td>
