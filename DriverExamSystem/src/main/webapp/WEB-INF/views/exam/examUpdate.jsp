@@ -85,7 +85,7 @@
 				  <tr>
 					<td valign="top">试题解析:</td>
 					<td>
-						<textarea id="examParse" name="examParse" cols="76" rows="10" value="${exam.examParse}" ></textarea>
+						<textarea id="examParse" name="examParse" cols="76" rows="10">${exam.examParse}</textarea>
 					</td>
 				  </tr>
 				  <tr>
