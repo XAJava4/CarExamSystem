@@ -1,6 +1,8 @@
 package com.java4.des.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 @Table(name="db_exam")
 public class Exam {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int examID;			//试题序号
 	private String examTitle;	//试题内容
 	private String examOptionA; //试题选项A
