@@ -81,28 +81,32 @@
 				</li>
 
 				<form action="/user/vandlogin" method="post">
-					<table style="height: 200px;">
+					<table style="height: 200px;width: 330px">
 
 						<tr>
 							<td colspan="2"><span class="message" style="color:red;" >${massage4}</span> <span
 							style="color:red;"	class="message">${massage3}</span></td>
 						</tr>
 						<tr>
+							<td align="right">用户名：</td>
 							<td><input type="text" id="username" name="username"
 								placeholder="用户名" /></td>
 							<td><em id="emId"></em></td>
 						</tr>
 						<tr>
+						<td align="right">密码：</td>
 							<td><input type="password" id="password" name="password"
 								placeholder="密码" /></td>
 							<td><em id="pass"></em></td>
 						</tr>
 						<tr>
+						<td align="right">角色：</td>
 							<td><input type="radio" name="id" value="1"
 								checked="checked" />管理员 <input type="radio" name="id" value="2" />考生
 							</td>
 						</tr>
 						<tr>
+						<td></td>
 							<td><input type="submit" value="登录" onclick="return check()" /></td>
 						</tr>
 					</table>
