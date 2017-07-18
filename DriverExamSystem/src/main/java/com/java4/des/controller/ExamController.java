@@ -19,12 +19,12 @@ public class ExamController {
 	private ExamService examService;
 	
 	
-	@RequestMapping(value="addexam" ,method={RequestMethod.GET} )
+	@RequestMapping(value="addexam" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public String addexam(){
 		return "exam/examAdd";
 	}
 	//添加试题
-	@RequestMapping(value="addexam" ,method={RequestMethod.POST} )
+	@RequestMapping(value="addexam" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView addExam(Exam exam ){
 		examService.addExam(exam);
 		List<Exam> list=examService.getAllExams();
@@ -35,7 +35,7 @@ public class ExamController {
 	}
 	
 	//获取一个试题查看试题
-	@RequestMapping(value="getOneExam/{examID}" ,method={RequestMethod.GET} )
+	@RequestMapping(value="getOneExam/{examID}" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView getOneExam(@PathVariable int examID ){
 		Exam exam=examService.getOne(examID);
 		ModelAndView mv=new ModelAndView();
@@ -45,7 +45,7 @@ public class ExamController {
 	}
 	
 	//获取更新更新试题
-	@RequestMapping(value="updateExam/{examID}" ,method={RequestMethod.GET} )
+	@RequestMapping(value="updateExam/{examID}" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView UpdateExam(@PathVariable int examID ){
 		Exam exam=examService.getOne(examID);
 		ModelAndView mv=new ModelAndView();
@@ -54,7 +54,7 @@ public class ExamController {
 		return mv;
 	}
 	//更新试题
-	@RequestMapping(value="updateExam1" ,method={RequestMethod.POST} )
+	@RequestMapping(value="updateExam1" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView updateExam(Exam exam ){
 		examService.updateExam(exam);
 		List<Exam> list=examService.getAllExams();
@@ -70,7 +70,7 @@ public class ExamController {
 	
 	
 	//获取所有试题
-	@RequestMapping(value="getAllexam" ,method={RequestMethod.GET} )
+	@RequestMapping(value="getAllexam" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView getAllExam(){
 		List<Exam> list=examService.getAllExams();
 		ModelAndView mv=new ModelAndView();
@@ -80,7 +80,7 @@ public class ExamController {
 	}
 	
 	//根据id删除试题
-	@RequestMapping(value="deleteExam/{examID}" ,method={RequestMethod.GET} )
+	@RequestMapping(value="deleteExam/{examID}" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView deleteExamById(@PathVariable Integer examID) {
 		examService.delteExam(examID);
 		List<Exam> list=examService.getAllExams();
