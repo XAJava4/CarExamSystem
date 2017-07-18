@@ -163,4 +163,16 @@ public class StudentController {
 				return "redirect:/findAll";
 		}
 		
+		//验证用户名使用否可用
+		@ResponseBody
+		@RequestMapping(value="/validate", method={RequestMethod.POST})
+		public String validate(Integer id ){
+				Student student=studentService.getOne(id);
+			if (null!=student) {
+				return  "<font color='red' > 账号不可用! </font>";
+			}else {
+				return  "<font color='green' > 账号可用! </font>";
+			}
+			
+		}
 }
