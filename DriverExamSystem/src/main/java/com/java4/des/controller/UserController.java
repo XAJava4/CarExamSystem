@@ -171,4 +171,12 @@ public class UserController {
 		List<User> list = this.userService.findUserByPassword(password);
 		return list;
 	}
+	//注销
+	@RequestMapping(value="/redirect",method= RequestMethod.GET)
+	public String redirect(){
+		
+		return "index";
+	}
+	
+	
 }
