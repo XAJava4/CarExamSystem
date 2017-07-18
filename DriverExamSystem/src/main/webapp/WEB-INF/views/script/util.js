@@ -12,20 +12,27 @@ SSH.EXAM = (function() {
 			CONTEXT = "/DriverExamSystem";
 		}
 	}
-	function getFirst() {
+	function getOneExam(id) {
 		getProjPath();
 		$.ajax({
 			type : 'POST',
 			contentType : 'application/json',
-			url : CONTEXT + '/exam/getFirst',
+			url : CONTEXT + '/exam/getOneExam/'+id,
 			processData : false,
 			dataType : 'json',
-			data : '{}',
+			data : '{"id":"' + id + '"}',
 			success : function(data) {
 				
-				window.location.href = CONTEXT
-				+ "/WEB-INF/views/exam.jsp"
-
+				$("#id").innerHTML=exam.examID;
+				$("#title").innerHTML=exam.examTitle;
+				$("#optionA").innerHTML=exam.examOptionA;
+				$("#optionB").innerHTML=exam.examOptionB;
+				$("#optionC").innerHTML=exam.examOptionC;
+				$("#optionD").innerHTML=exam.examOptionD;
+				$("#answer").innerHTML=exam.examAnswer;
+				$("#examParse").innerHTML=exam.examParse;
+				var address=exam.examImage;
+                $("#image").src=address;
 
 			},
 			error : function() {
@@ -51,7 +58,7 @@ SSH.EXAM = (function() {
 			}
 		});
 	}
-	function getLast(id) {
+/*	function getLast(id) {
 		$.ajax({
 			type : 'POST',
 			contentType :  'application/json',
@@ -84,7 +91,7 @@ SSH.EXAM = (function() {
 				alert("跳转失败！")
 			}
 		});
-	}
+	}*/
 	
 	
 	
@@ -93,9 +100,7 @@ SSH.EXAM = (function() {
 	return {
 		CONTEXT : CONTEXT,
 		refer : refer,
-		getFirst : getFirst,
-		getLast : getLast,
-		getNext : getNext,
+		getOneExam : getOneExam
 		
 	};
 
@@ -103,7 +108,7 @@ SSH.EXAM = (function() {
 
 $(function() {
 	// 试题页面载入完成后，执行这个操作
-	window.onload = SSM.EXAM.getFirst();
+	window.onload = SSH.EXAM.getOneExam(0);
 
 	// 提交按钮
 	$("#refer").click(function() {
@@ -114,19 +119,19 @@ $(function() {
 	// 上一题按钮
 	$("#last").click(function() {
       var id=$("#id").val();
-	SSH.EXAM.getLast(id-1);
+	SSH.EXAM.getOneExam(id-1);
 
 	})
 	// 下一题按钮
 	$("#next").click(function() {
-		 var result=$('#answer input[name="option"]:checked ').val();
+		 var result=$('#exam input[name="option"]:checked ').val();
 		 var answer=$('#answer').val();
 		 if(answer==result){
 			 
 			 
 		 }
 		var id=$("#id").val();
-		SSH.EXAM.getNext(id+1);
+		SSH.EXAM.getOneExam(id+1);
 
 	})
 	

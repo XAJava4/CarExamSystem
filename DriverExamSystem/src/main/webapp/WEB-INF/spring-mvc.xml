@@ -13,7 +13,9 @@
 		<context:include-filter type="annotation"
 			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
-
+    <!-- 静态资源映射  不加的话无法找到web-inf下的js文件-->
+   <mvc:resources location="/WEB-INF/views/script/" mapping="/script/**"/>
+   
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
 			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->

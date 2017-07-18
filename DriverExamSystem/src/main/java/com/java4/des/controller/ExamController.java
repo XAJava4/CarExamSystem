@@ -40,7 +40,7 @@ public class ExamController {
 	}
 	
 	//获取一个试题
-	@RequestMapping(value="getOneExam/{examID}" ,method={RequestMethod.GET} )
+	@RequestMapping(value="/exam/getOneExam/{examID}" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView getOneExam(@PathVariable int examID ){
 		Exam exam=examService.findByExamID(examID);
 		ModelAndView mv=new ModelAndView();
