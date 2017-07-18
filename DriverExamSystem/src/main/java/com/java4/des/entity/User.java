@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name="mxy_user")
+@Table(name="admin")
 public class User extends IdEntity implements Serializable {
 	@NotBlank(message="用户名不为空")
 	private String username;
