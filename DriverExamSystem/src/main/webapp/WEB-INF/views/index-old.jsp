@@ -111,22 +111,7 @@
 						</tr>
 					</table>
 				</form>
-
-				<%-- <form id=login method=post action="<%= request.getContextPath() %>/user/login">
-					<li>
-						<p>用户名:</p> <input id=id class=textInput maxLength=150 size=30 type=text name=username placeholder="请输入账号">
-						<td><form:errors path="username" cssStyle="color:red"/></td>
-					</li>
-					<li>
-						<p>密码:</p> 
-						<input id=password class=textInput maxLength=80 size=30type=password name=password placeholder="请输入密码"> 
-						<td><form:errors path="password" cssStyle="color:red"/></td>
-					</li>
-					<li class=highlight>
-					<input id=loginBtn  value=登录 type=submit>
-					<a id=regBtn href="<%=request.getContextPath()%>/user/save" >注册新账号</a> 
-					</li>
-				</form> --%>
+				
 			</ul>
 			<div class=floatRight>
 				一）、考试过程中，考生不允许带帽子、墨镜（包括含有墨镜成份的眼镜），用手托住下巴等，确保视频头像完整。如打印成绩没有抓拍到整张头像，考试成绩做零分处理。注意：考试全过程必须面对摄像头。</br>
