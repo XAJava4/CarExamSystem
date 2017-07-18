@@ -90,8 +90,8 @@ public class StudentController {
 		return "student/addstudent";
 	}
 	// 增加页面
-	@RequestMapping(value="addstudent" ,method={RequestMethod.POST} )
-	public ModelAndView addstudent( Student student ){
+	@RequestMapping(value="/addstudent" ,method={RequestMethod.POST} )
+	public ModelAndView addstudent(Student student ){
 		studentService.addstudent(student);
 		modelAndView.addObject("message","添加成功");
 		modelAndView.setViewName("student/addstudent");
