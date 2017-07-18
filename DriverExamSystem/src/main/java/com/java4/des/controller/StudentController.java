@@ -38,7 +38,7 @@ public class StudentController {
 						if (pass.equals(yanzhen)) {
 							modelAndView.addObject("stu", student2);
 							//跳转到成功界面
-							modelAndView.setViewName("student/loginsuccess");
+							modelAndView.setViewName("success/exam");
 						}else {
 							//学号和密码不匹配
 							modelAndView.addObject("massage4", "账号密码不匹配");
