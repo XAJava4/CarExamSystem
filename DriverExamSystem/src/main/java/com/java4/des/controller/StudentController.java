@@ -24,6 +24,7 @@ public class StudentController {
 	private StudentService studentService;
 	private ModelAndView modelAndView=new ModelAndView();
 	
+	//学生登录 
 	@RequestMapping(value="/stulogin" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView stuLogin( HttpServletRequest request,HttpServletResponse response ){
 			int id=Integer.parseInt((String) request.getSession().getAttribute("username"));
@@ -79,17 +80,13 @@ public class StudentController {
 			
 			return modelAndView;
 	}
-	@RequestMapping(value="stuloginindex", method={RequestMethod.GET})
-	public String  loginindex(){
-		return "student/stulogin";
-	}
-	
-	
+
+	//转到添加学生页面
 	@RequestMapping(value="addstudent" ,method={RequestMethod.GET} )
 	public String addstudentg(){
 		return "student/addstudent";
 	}
-	// 增加页面
+	// 增加学生
 	@RequestMapping(value="/addstudent" ,method={RequestMethod.POST} )
 	public ModelAndView addstudent(Student student ){
 		studentService.addstudent(student);
@@ -125,6 +122,8 @@ public class StudentController {
 		}
 		return "redirect:/findAll";
 	}
+	
+	//获取单个学员
 		@RequestMapping(value="/getOne",method={RequestMethod.POST} )
 		public ModelAndView getOne( HttpServletRequest request ){
 			 String id= request.getParameter("stuId");
@@ -157,24 +156,11 @@ public class StudentController {
 			return modelAndView;
 		}
 		
-		//更新
+		//更新学员
 		@RequestMapping(value="/update", method={RequestMethod.POST})
 		public String upStudent( Student student ){
 			studentService.update(student.getStuName(), student.getStuPass(), student.getStuSex(), student.getTeaName(), student.getStuId());
 				return "redirect:/findAll";
 		}
 		
-		//校验用户是可用
-		@ResponseBody 
-		@RequestMapping(value="/varlidate",method={RequestMethod.POST} )
-		public Integer validate( @RequestBody Integer stuId ){
-			  Student student= studentService.getOne(stuId);
-			 Integer i;
-			  if (null!=student) {
-				  i=new  Integer("1");
-			}else {
-				 i=new  Integer("0");
-			}
-			  return i;
-		}
 }
