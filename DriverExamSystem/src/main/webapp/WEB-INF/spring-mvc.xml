@@ -36,6 +36,14 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<mvc:interceptors>  
+   		 <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 --> 
+   		 <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />  
+   		 <!-- 如果不定义 mvc:mapping path 将拦截所有的URL请求 -->
+    	<bean class="com.java4.des.interceptor.AuthInterceptor"></bean>
+	</mvc:interceptors>
+
+
 
 	<!-- 静态资源映射 -->
     <mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
@@ -46,10 +54,7 @@
 	<mvc:view-controller path="/" view-name="redirect:/index" />
 	<mvc:resources mapping="/views/**" location="/WEB-INF/views/" />
 
-	<mvc:interceptors>
-		<bean class="com.java4.des.interceptor.RequestInterceptor1"></bean>
-		<bean class="com.java4.des.interceptor.RequestInterceptor"></bean>
-	</mvc:interceptors>
+	
 	<!-- 将Controller抛出的异常转到特定View 打开注释后会跳转到500.jsp中 -->
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
