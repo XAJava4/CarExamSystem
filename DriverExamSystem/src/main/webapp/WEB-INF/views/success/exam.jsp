@@ -60,7 +60,7 @@
 				function errorFunc(e) {
 					alert('Error！' + e);
 				}
-				window.onload = getMedia;
+				window.onload = getMedia();
 			</script>
 		</table>
 
