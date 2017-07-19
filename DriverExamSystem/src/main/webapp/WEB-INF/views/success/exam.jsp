@@ -41,7 +41,7 @@
 		<table width="100px" height="150px" border="1" align="right"
 			style="position: relative;">
 			<tr>
-				<td><video id="video" width="285" height="150" autoplay></video>
+				<td><video id="video" width="285" height="150" autoplay></video></td>
 			</tr>
 			<script type="text/javascript">
 				var video = document.querySelector('video');
@@ -84,8 +84,9 @@
 
 		<center>
 			<table style="position: relative; top: 75px;">
+				
 				<caption>学生信息</caption>
-				</tr>
+				
 				<tr>
 					<td>姓名：</td>
 					<td>${stu.stuName}</td>

@@ -21,7 +21,10 @@ import com.java4.des.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
+<<<<<<< Updated upstream
 	// private static Logger log = Logger.getLogger(UserController.class);
+=======
+>>>>>>> Stashed changes
 
 	@Autowired
 	private UserService userService;
@@ -58,5 +61,13 @@ public class UserController {
 		}
 
 	}
-
+	
+	//注销	
+	@RequestMapping(value="/redirect",method= RequestMethod.GET)
+	public String adminDisable(HttpServletRequest request){
+		request.getSession().invalidate();
+		
+		return "index";
+		
+	}
 }
