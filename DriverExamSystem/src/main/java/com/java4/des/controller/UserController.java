@@ -21,10 +21,7 @@ import com.java4.des.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-<<<<<<< Updated upstream
 	// private static Logger log = Logger.getLogger(UserController.class);
-=======
->>>>>>> Stashed changes
 
 	@Autowired
 	private UserService userService;
