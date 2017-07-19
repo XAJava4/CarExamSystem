@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java4.des.auth.Authpassport;
+import com.java4.des.auth.AuthPassport;
 import com.java4.des.entity.Student;
 import com.java4.des.service.StudentService;
 
@@ -89,7 +89,7 @@ public class StudentController {
 	}
 	// 增加学生
 	// 增加页面
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="/addstudent" ,method={RequestMethod.POST} )
 	public ModelAndView addstudent(Student student ){
 		studentService.addstudent(student);
@@ -98,7 +98,7 @@ public class StudentController {
 		return modelAndView;
 	}
 	// 查看学员
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="/findAll" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView findAll(){
 		List<Student>  list=studentService.findAll();
@@ -108,7 +108,7 @@ public class StudentController {
 	}
 	
 	//删除
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="/deleteStudent/{id}" ,method={RequestMethod.GET} )
 	public String  deleteStudent( HttpServletRequest request,@PathVariable Integer id  ){
 		studentService.delete(id);
@@ -116,7 +116,7 @@ public class StudentController {
 		
 	}
 	//多删除
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="/deleteStudent" ,method={RequestMethod.POST} )
 	public String  deleteList( HttpServletRequest request ){
 		String[] ids=request.getParameterValues("gou");
@@ -154,7 +154,7 @@ public class StudentController {
 		}
 		
 		//更新页面
-		@Authpassport
+		@AuthPassport
 		@RequestMapping(value="/updatestudent/{id}",method={RequestMethod.GET})
 		public ModelAndView update( @PathVariable Integer id ){
 			Student student=studentService.getOne(id);
@@ -165,7 +165,7 @@ public class StudentController {
 		
 		//更新学员
 		//更新
-		@Authpassport
+		@AuthPassport
 		@RequestMapping(value="/update", method={RequestMethod.POST})
 		public String upStudent( Student student ){
 			studentService.update(student.getStuName(), student.getStuPass(), student.getStuSex(), student.getTeaName(), student.getStuId());

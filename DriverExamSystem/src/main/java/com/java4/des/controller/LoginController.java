@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.java4.des.auth.Authpassport;
+import com.java4.des.auth.AuthPassport;
 
 @Controller
 public class LoginController {
@@ -20,7 +20,7 @@ public class LoginController {
 		return "index";
 	}
 	
-	@Authpassport
+	@AuthPassport
 	@ResponseBody
 	@RequestMapping(value = "/json")
 	public List<String> json() {

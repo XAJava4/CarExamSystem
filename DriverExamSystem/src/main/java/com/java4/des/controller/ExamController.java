@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java4.des.auth.Authpassport;
+import com.java4.des.auth.AuthPassport;
 import com.java4.des.entity.Exam;
 import com.java4.des.service.ExamService;
 
@@ -19,13 +19,13 @@ public class ExamController {
 	@Autowired
 	private ExamService examService;
 	
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="addexam" ,method={RequestMethod.GET} )
 	public String addexam(){
 		return "exam/examAdd";
 	}
 	//添加试题
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="addexam" ,method={RequestMethod.POST} )
 	public ModelAndView addExam(Exam exam ){
 		examService.addExam(exam);
@@ -37,7 +37,7 @@ public class ExamController {
 	}
 	
 	//获取一个试题查看试题
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="getOneExam/{examID}" ,method={RequestMethod.GET} )
 	public ModelAndView getOneExam(@PathVariable int examID ){
 		Exam exam=examService.getOne(examID);
@@ -48,7 +48,7 @@ public class ExamController {
 	}
 	
 	//获取更新更新试题
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="updateExam/{examID}" ,method={RequestMethod.GET} )
 	public ModelAndView UpdateExam(@PathVariable int examID ){
 		Exam exam=examService.getOne(examID);
@@ -58,7 +58,7 @@ public class ExamController {
 		return mv;
 	}
 	//更新试题
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="updateExam1" ,method={RequestMethod.POST} )
 	public ModelAndView updateExam(Exam exam ){
 		examService.updateExam(exam);
@@ -75,7 +75,7 @@ public class ExamController {
 	
 	
 	//获取所有试题
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="getAllexam" ,method={RequestMethod.GET} )
 	public ModelAndView getAllExam(){
 		List<Exam> list=examService.getAllExams();
@@ -86,7 +86,7 @@ public class ExamController {
 	}
 	
 	//根据id删除试题
-	@Authpassport
+	@AuthPassport
 	@RequestMapping(value="deleteExam/{examID}" ,method={RequestMethod.GET} )
 	public ModelAndView deleteExamById(@PathVariable Integer examID) {
 		examService.delteExam(examID);
