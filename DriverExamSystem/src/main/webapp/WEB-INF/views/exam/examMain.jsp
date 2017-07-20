@@ -52,12 +52,12 @@ body {
 								<div id="manageExam" align="center">
 									<table width="95%" cellspacing="10">
 										<tr align="center">
-											<td>试题编号</td>
+											<td style="width: 100px">试题编号</td>
 											<td>试题标题</td>
-											<td>正确答案</td>
-											<td>查看试题</td>
-											<td>更新试题</td>
-											<td>删除试题</td>
+											<td style="width: 100px">正确答案</td>
+											<td style="width: 100px">查看试题</td>
+											<td style="width: 100px">更新试题</td>
+											<td style="width: 100px">删除试题</td>
 										</tr>
 										<c:forEach var="list" items="${list}">
 											<tr align="center">
