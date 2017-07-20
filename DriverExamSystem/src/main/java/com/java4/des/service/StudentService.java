@@ -43,4 +43,5 @@ public class StudentService {
 		studentDao.update(stuName, stuPass, stuSex, teaName, stuId);
 	}
 
+
 }

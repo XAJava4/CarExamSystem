@@ -7,17 +7,31 @@
 	src="<%=request.getContextPath()%>/views/script/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		//给 stuId 添加一个change事件
 		$("#stuId").change(function() {
+		//获取stuId 表单的value
 			var val = $(this).val();
+			// 除去两边空格
 			val = $.trim(val);
 			var $this = $(this);
+			//判断输入值是否为空
 			if ("" != val) {
+				//消除之前的<font> 标签
+				$this.nextAll("font").remove();
+				//给 url 值
+				var url="<%=request.getContextPath()%>/validate";
+				var reqdate={"id":val};
+				//使用ajax
+				$.post( url,reqdate,function(date){
+						$("span").html(date);
+					} )
 			} else {
 				$this.nextAll("font").remove();
-				$this.after(" <font color='red' > 账号不能为空! </font> ")
+			 $this.after(" <font color='red' > 账号不能为空! </font> ") 
 
 			}
 
+			
 		})
 
 	})
@@ -33,6 +47,7 @@
 			<tr>
 				<td>身份证号：</td>
 				<td><input type="text" id="stuId" name="stuId" /></td>
+				<td><span></span></td>
 			</tr>
 			<tr>
 				<td>姓名：</td>

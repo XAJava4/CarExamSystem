@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java4.des.auth.AuthPassport;
 import com.java4.des.entity.Student;
 import com.java4.des.service.StudentService;
 
@@ -24,6 +24,7 @@ public class StudentController {
 	private StudentService studentService;
 	private ModelAndView modelAndView=new ModelAndView();
 	
+	//学生登录 
 	@RequestMapping(value="/stulogin" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView stuLogin( HttpServletRequest request,HttpServletResponse response ){
 			int id=Integer.parseInt((String) request.getSession().getAttribute("username"));
@@ -38,6 +39,7 @@ public class StudentController {
 						if (pass.equals(yanzhen)) {
 							modelAndView.addObject("stu", student2);
 							//跳转到成功界面
+							request.getSession().setAttribute("logined", student2.getStuName());
 							modelAndView.setViewName("success/exam");
 						}else {
 							//学号和密码不匹配
@@ -79,17 +81,15 @@ public class StudentController {
 			
 			return modelAndView;
 	}
-	@RequestMapping(value="stuloginindex", method={RequestMethod.GET})
-	public String  loginindex(){
-		return "student/stulogin";
-	}
-	
-	
+
+	//转到添加学生页面
 	@RequestMapping(value="addstudent" ,method={RequestMethod.GET} )
 	public String addstudentg(){
 		return "student/addstudent";
 	}
+	// 增加学生
 	// 增加页面
+	@AuthPassport
 	@RequestMapping(value="/addstudent" ,method={RequestMethod.POST} )
 	public ModelAndView addstudent(Student student ){
 		studentService.addstudent(student);
@@ -98,6 +98,7 @@ public class StudentController {
 		return modelAndView;
 	}
 	// 查看学员
+	@AuthPassport
 	@RequestMapping(value="/findAll" ,method={RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView findAll(){
 		List<Student>  list=studentService.findAll();
@@ -107,6 +108,7 @@ public class StudentController {
 	}
 	
 	//删除
+	@AuthPassport
 	@RequestMapping(value="/deleteStudent/{id}" ,method={RequestMethod.GET} )
 	public String  deleteStudent( HttpServletRequest request,@PathVariable Integer id  ){
 		studentService.delete(id);
@@ -114,6 +116,7 @@ public class StudentController {
 		
 	}
 	//多删除
+	@AuthPassport
 	@RequestMapping(value="/deleteStudent" ,method={RequestMethod.POST} )
 	public String  deleteList( HttpServletRequest request ){
 		String[] ids=request.getParameterValues("gou");
@@ -125,6 +128,8 @@ public class StudentController {
 		}
 		return "redirect:/findAll";
 	}
+	
+	//获取单个学员
 		@RequestMapping(value="/getOne",method={RequestMethod.POST} )
 		public ModelAndView getOne( HttpServletRequest request ){
 			 String id= request.getParameter("stuId");
@@ -149,6 +154,7 @@ public class StudentController {
 		}
 		
 		//更新页面
+		@AuthPassport
 		@RequestMapping(value="/updatestudent/{id}",method={RequestMethod.GET})
 		public ModelAndView update( @PathVariable Integer id ){
 			Student student=studentService.getOne(id);
@@ -157,24 +163,25 @@ public class StudentController {
 			return modelAndView;
 		}
 		
+		//更新学员
 		//更新
+		@AuthPassport
 		@RequestMapping(value="/update", method={RequestMethod.POST})
 		public String upStudent( Student student ){
 			studentService.update(student.getStuName(), student.getStuPass(), student.getStuSex(), student.getTeaName(), student.getStuId());
 				return "redirect:/findAll";
 		}
 		
-		//校验用户是可用
-		@ResponseBody 
-		@RequestMapping(value="/varlidate",method={RequestMethod.POST} )
-		public Integer validate( @RequestBody Integer stuId ){
-			  Student student= studentService.getOne(stuId);
-			 Integer i;
-			  if (null!=student) {
-				  i=new  Integer("1");
+		//验证用户名使用否可用
+		@ResponseBody
+		@RequestMapping(value="/validate", method={RequestMethod.POST})
+		public String validate(Integer id ){
+				Student student=studentService.getOne(id);
+			if (null!=student) {
+				return  "<font color='red' > 账号不可用! </font>";
 			}else {
-				 i=new  Integer("0");
+				return  "<font color='green' > 账号可用! </font>";
 			}
-			  return i;
+			
 		}
 }

@@ -8,26 +8,8 @@
 	src="<%=request.getContextPath()%>/script/jquery.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/script/nameSpace.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/script/util.js"></script>
-<SCRIPT LANGUAGE="JavaScript">
-	var maxtime = 60 * 60 //一个小时，按秒计算，自己调整!  
-	function CountDown() {
-		if (maxtime >= 0) {
-			minutes = Math.floor(maxtime / 60);
-			seconds = Math.floor(maxtime % 60);
-			msg = "距离结束还有" + minutes + "分" + seconds + "秒";
-			document.all["timer"].innerHTML = msg;
-			if (maxtime == 5 * 60)
-				alert('注意，还有5分钟!');
-			--maxtime;
-		} else {
-			clearInterval(timer);
-			alert("时间到，结束!");
-		}
-	}
-	timer = setInterval("CountDown()", 1000);
-</SCRIPT>
+
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
 	http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -41,7 +23,7 @@
 		<table width="100px" height="150px" border="1" align="right"
 			style="position: relative;">
 			<tr>
-				<td><video id="video" width="285" height="150" autoplay></video>
+				<td><video id="video" width="290" height="150" autoplay></video></td>
 			</tr>
 			<script type="text/javascript">
 				var video = document.querySelector('video');
@@ -78,14 +60,15 @@
 				function errorFunc(e) {
 					alert('Error！' + e);
 				}
-				window.onload = getMedia;
+				window.onload = getMedia();
 			</script>
 		</table>
 
 		<center>
 			<table style="position: relative; top: 75px;">
+				
 				<caption>学生信息</caption>
-				</tr>
+				
 				<tr>
 					<td>姓名：</td>
 					<td>${stu.stuName}</td>
@@ -99,7 +82,7 @@
 				</tr>
 				<tr>
 					<td>学号：</td>
-					<td>${stu.stuId}</td>
+					<td id="stuId">${stu.stuId}</td>
 				</tr>
 				<tr>
 					<td>老师：</td>
@@ -116,66 +99,80 @@
 		style="width: 800px; height: 420px; border: 1px solid; position: absolute; left: 310px;">
 		<input type="hidden" id="id">
 		<center>
+		<br><br><br>
 			<div id="title"></div>
-			<div id="optionA">
-				<input type="radio" name="option" value="${exam.examOptionA}">
-			</div>
-			<div id="optionB">
-				<input type="radio" name="option" value="${exam.examOptionB}">
-			</div>
-			<div id="optionC">
-				<input type="radio" name="option" value="${exam.examOptionC}">
-			</div>
-			<div id="optionD">
-				<input type="radio" name="option" value="${exam.examOptionD}">
-			</div>
-			<br>
-			<br>
-			<br>
-			<div id="examParse">
-				<h3>试题说明：${exam.examParse}</h3>
-			</div>
-			<input type="hidden" id="answer" value="${exam.examAnswer}">
-			<br> <input type="button" id="last" value="上一题"> <input
-				type="button" id="next" value="下一题">
-			<script type="text/javascript">
-				var id = $("#id").val();
-				if (id == 1) {
-					$("#last").attr("disabled", true);
-				}
-				if (id == 20) {//最大题目数
-					$("#first").attr("disabled", true);
-				}
-				if (id == 2) {
-					$("#first").removeAttr(disabled);
-				}
-				if (id == 19) {
-					$("#last").removeAttr(disabled);
-				}
-			</script>
+			
+				<input type="radio" name="option" value="A">
+				<span id="optionA"></span><br>
+
+			
+				<input type="radio" name="option" value="B">
+				<span  id="optionB"></span><br>
+			
+			
+				<input type="radio" name="option" value="C">
+				<span  id="optionC"></span><br>
+			
+			
+				<input type="radio" name="option" value="D">
+				<span  id="optionD"></span><br>
+			
+
+			
+				<div style="position: relative; top: 100px;">试题说明：<span style="color: red;" id="examParse">${exam.examParse}</span></div>
+			
+			<input type="hidden" id="answer" >
+			
+			<div style="position: absolute;left: 200px; bottom: 50px;"><input type="button" id="last" value="上一题" style="width: 96px; height: 44px"> </div>
+			<div style="position: absolute;right: 200px; bottom: 50px;"><input type="button" id="next" value="下一题" style="width: 96px; height: 44px"></div>
 		</center>
 	</div>
 	<!-- 题目列表 -->
-	<div
+	<div id="boxList"
 		style="width: 320px; height: 420px; border: 1px solid; position: absolute; left: 1110px;">
-		<c:forEach begin="1" end="100">
-			<input type="checkbox" style="width: 20px; height: 20px"
-				onclick="return false">
-		</c:forEach>
+		
 	</div>
 	<!-- 下面部分 -->
 	<div
 		style="height: 330px; width: 1422px; position: absolute; top: 430px; border: 1px solid;">
 		<!-- 图片 -->
 		<center>
-			<img id="image">
+			<img id="image" >
 		</center>
 		<span style="position: absolute; right: 0px; bottom: 0px;"> <input
 			type="button" id="refer" value="交卷" align="right"
 			style="height: 60px; width: 100px"></span>
-
+         <span style="position: absolute; left: 0px; bottom: 0px;"> <input
+			type="button" id="start" value="开始考试" 
+			style="height: 60px; width: 100px"></span>
 	</div>
+	<SCRIPT LANGUAGE="JavaScript">
+	var maxtime = 60 * 60 //一个小时，按秒计算，自己调整!  
+	function CountDown() {
+		if (maxtime >= 0) {
+			minutes = Math.floor(maxtime / 60);
+			seconds = Math.floor(maxtime % 60);
+			msg = "距离结束还有" + minutes + "分" + seconds + "秒";
+			document.all["timer"].innerHTML = msg;
+			if (maxtime == 5 * 60)
+				alert('注意，还有5分钟!');
+			--maxtime;
+		} else {
+			clearInterval(timer);
+			alert("时间到，结束!");
+		}
+	}
+	$("#start").click(function (){
+      
+		$(this).attr("disabled", true);
+	timer = setInterval("CountDown()", 1000);
 
+
+	
+		})
+</SCRIPT>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/script/util.js"></script>
 
 
 </body>

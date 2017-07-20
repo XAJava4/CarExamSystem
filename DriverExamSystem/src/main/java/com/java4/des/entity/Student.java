@@ -1,6 +1,5 @@
 package com.java4.des.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,7 +19,7 @@ public class Student {
 	private String stuName;			//学生姓名	
 	private String stuPass;			//密码
 	private int stuSex;			//性别
-	private float stuScore;			//成绩
+	private Integer stuScore;			//成绩
 	private String teaName;			//对应教练的姓名
 	
 }
