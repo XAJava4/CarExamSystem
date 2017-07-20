@@ -18,8 +18,8 @@ public class Student {
 	private int stuId;				//学号
 	private String stuName;			//学生姓名	
 	private String stuPass;			//密码
-	private int stuSex;			//性别
-	private Integer stuScore;			//成绩
+	private int stuSex;	//性别
+	private Integer stuScore=0;			//成绩
 	private String teaName;			//对应教练的姓名
 	
 }
