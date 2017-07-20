@@ -34,7 +34,7 @@ body {
 		<form action="<%=request.getContextPath()%>/getAllexam" method="get">
 			<table style="height: 600px;width: 800px; border-collapse: collapse" align="center">
 				<tr >
-					<td style="width: 100px" align="left"><h3>试题编号:</h3></td>
+					<td style="width: 120px" align="left"><h3>试题编号:</h3></td>
 					<td>${exam.examID}</td>
 				</tr>
 				<tr>
