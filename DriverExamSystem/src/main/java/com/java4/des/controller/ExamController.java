@@ -65,10 +65,6 @@ public class ExamController {
 		
 		return mv;
 	}
-	
-	
-	
-	
 	//获取所有试题
 	@RequestMapping(value="getAllexam" ,method={RequestMethod.GET} )
 	public ModelAndView getAllExam(){

@@ -62,7 +62,7 @@ body {
 										<c:forEach var="list" items="${list}">
 											<tr align="center">
 												<td>${list.examID}</td>
-												<td>${list.examTitle}</td>
+												<td align="left">${list.examTitle}</td>
 												<td>${list.examAnswer}</td>
 												<td><a
 													href="<%=request.getContextPath()%>/getOneExam/${list.examID}">查看</a></td>
@@ -75,8 +75,8 @@ body {
 										
 									</table>
 								</div></td>
-					</tr>
-
 					
+</table>
+	</td>				
 </body>
 </html>

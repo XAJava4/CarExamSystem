@@ -46,8 +46,8 @@
 					<td colspan="2"><FONT color="red"><s:actionerror/></FONT></td>
 				  </tr>
 				  <tr>
-					<td>试题题目:</td>
-					<td><input type="text" name="examTitle" id="examTitle"  size="80"></td>
+					<td >试题题目:</td>
+					<td ><input type="text" name="examTitle" id="examTitle"  size="80"></td>
 				  </tr>
 				  <tr>
 					<td>选项A:</td>
@@ -77,7 +77,7 @@
 				  <tr>
 					<td valign="top">试题解析:</td>
 					<td>
-						<textarea id="examParse" name="examParse" cols="76" rows="10" value="${exam.examParse}" ></textarea>
+						<textarea id="examParse" name="examParse" cols="76" rows="10"></textarea>
 					</td>
 				  </tr>
 				  <tr>

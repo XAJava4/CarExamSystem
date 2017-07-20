@@ -8,38 +8,40 @@
 </head>
 <body>
 	<center>
+	<h1 style="color: orange;">试题详情</h1>
+	<hr color="orange" />
 		<form action="<%=request.getContextPath()%>/getAllexam" method="get">
-			<table border="1">
-				<tr>
-					<td>试题编号</td>
+			<table style="height: 600px;width: 800px" border="1">
+				<tr >
+					<td style="width: 80px" align="right">试题编号:</td>
 					<td>${exam.examID}</td>
 				</tr>
 				<tr>
-					<td>试题标题</td>
+					<td align="right">试题标题:</td>
 					<td>${exam.examTitle}</td>
 				</tr>
 				<tr>
-					<td>选项A</td>
+					<td align="right">选项A:</td>
 					<td>${exam.examOptionA}</td>
 				</tr>
 				<tr>
-					<td>选项B</td>
+					<td align="right">选项B:</td>
 					<td>${exam.examOptionB}</td>
 				</tr>
 				<tr>
-					<td>选项C</td>
+					<td align="right">选项C:</td>
 					<td>${exam.examOptionC}</td>
 				</tr>
 				<tr>
-					<td>选项D</td>
+					<td align="right">选项D:</td>
 					<td>${exam.examOptionD}</td>
 				</tr>
 				<tr>
-					<td>试题答案</td>
+					<td align="right">试题答案:</td>
 					<td>${exam.examAnswer}</td>
 				</tr>
 				<tr>
-					<td>试题解析</td>
+					<td align="right">试题解析:</td>
 					<td>${exam.examParse}</td>
 				</tr>
 				<tr>
