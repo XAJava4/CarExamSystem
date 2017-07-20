@@ -8,33 +8,10 @@
 <script>	
 		$(function () {
         //检查用户名和密码是否为空
-        function check(){
-            var username= document.getElementById("stu_id");
-            if(username.value.trim()==""){//没有输入用户名是显示提示
-                //获取所有子节点
-                var findNodes = document.getElementById("Id").children;
-                if(findNodes.length==0){//只添加一次span
-                    var appdom= document.createElement("span");
-                    appdom.innerHTML="不能为空";
-                    appdom.style.color="red";
-                    document.getElementById("Id").appendChild(appdom);
-                }
-                return false;
-            }else{//输入了内容后清除节点内容
-                var findNodes =document.getElementById("Id").children;
-                if(findNodes.length>0){
-                    document.getElementById("Id").removeChild(findNodes[0]);
-                }
-            }
-}
-        	$(".delete").click(function() {
-            	var stuId=$(this).next(":hiden").val();
-            	var flag=confirm("确定要删除"+stuId+"信息吗？")
-            	if (flag) {
-					return false;
-				}
-				return false;
-			})
+		$("#stuId").change(function () {
+			var val=$(this).val();
+			 val=val.trim()
+		})
 		})
     </script>
 
@@ -77,7 +54,7 @@ div {
 		method="post">
 
 		<input type="text" id="stu_id"  name="stuId" placeholder="请输入身份证号"> <input
-			type="submit" value="查询" onclick="return check()" > <em id="Id"></em>
+			type="submit" value="查询"  > <em id="Id"></em>
 	</form>
 	<div>
 		<a href="<%= request.getContextPath() %>/addstudent">增加学员</a>
