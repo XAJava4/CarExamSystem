@@ -69,7 +69,7 @@ body {
 				</tr>
 				
 				<tr>
-				<td colspan="2" align="center"><input type="submit" value="返回" style="color: orange;"></div></td>
+				<td colspan="2" align="center"><input type="submit" value="返回" style="color: orange;"></td>
 				</tr>
 			</table>
 		</form>
