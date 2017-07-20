@@ -80,7 +80,7 @@
 					<h4>驾考系统登录</h4>
 				</li>
 
-				<form action="/user/vandlogin" method="post">
+				<form action="<%= request.getContextPath() %>/user/vandlogin" method="post">
 					<table style="height: 200px;width: 330px">
 
 						<tr>
