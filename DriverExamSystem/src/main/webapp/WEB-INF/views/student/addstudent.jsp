@@ -23,12 +23,16 @@
 				var reqdate={"id":val};
 				//使用ajax
 				$.post( url,reqdate,function(date){
+					if (date=="<font color='green' > 账号可用! </font>") {
+						 $("#button").attr("disabled", false)
+					}else {
+						 $("#button").attr("disabled", true)
+					}
 						$("span").html(date);
 					} )
 			} else {
 				$this.nextAll("font").remove();
 			 $this.after(" <font color='red' > 账号不能为空! </font> ") 
-
 			}
 
 			
@@ -68,7 +72,7 @@
 				<td><input type="text" name="teaName" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" /> <input type="reset" />
+				<td colspan="2"><input disabled="disabled" id="button" type="submit" /> <input type="reset" />
 				</td>
 			</tr>
 		</table>
