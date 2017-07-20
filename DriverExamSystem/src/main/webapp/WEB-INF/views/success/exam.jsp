@@ -23,7 +23,7 @@
 		<table width="100px" height="150px" border="1" align="right"
 			style="position: relative;">
 			<tr>
-				<td><video id="video" width="285" height="150" autoplay></video></td>
+				<td><video id="video" width="290" height="150" autoplay></video></td>
 			</tr>
 			<script type="text/javascript">
 				var video = document.querySelector('video');
