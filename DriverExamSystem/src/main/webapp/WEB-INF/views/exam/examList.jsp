@@ -4,30 +4,8 @@
 <html>
 <head>
 <style type="text/css">
-
-
-h2 {
-	text-align: center;
-}
-
-.one {
-	margin-left: 950px;
-}
-
 tr td {
 	border: 1px solid #000;
-}
-
-div {
-	margin-left: 1065px;
-}
-
-#jiao {
-	margin-left: 1120px;
-}
-
-#gbi {
-	margin-left: 185px;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
