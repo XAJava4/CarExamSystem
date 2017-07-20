@@ -24,6 +24,12 @@ public class StudentController {
 	private StudentService studentService;
 	private ModelAndView modelAndView=new ModelAndView();
 	
+	@RequestMapping(value = "/index")
+	public String index() {
+		System.out.println("index method run....");
+		return "index";
+	}
+	
 	//学生登录 
 	@RequestMapping(value="/stulogin" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView stuLogin( HttpServletRequest request,HttpServletResponse response ){

@@ -90,7 +90,7 @@
 						<tr>
 							<td align="right">用户名：</td>
 							<td><input type="text" id="username" name="username"
-								placeholder="用户名" /></td>
+								placeholder="考生请输入准考证号" /></td>
 							<td><em id="emId"></em></td>
 						</tr>
 						<tr>
